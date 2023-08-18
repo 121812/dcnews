@@ -1,0 +1,9 @@
+{
+    "Discord_bot_auth": "",
+    "Static_path": "",
+    "Mysql_host":"",
+    "Mysql_port":"",
+    "Mysql_db":"",
+    "Mysql_user":"",
+    "Mysql_password":""
+}
