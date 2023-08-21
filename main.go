@@ -16,14 +16,6 @@ func main() {
 	// 初始化数据库连接
 	init_db()
 
-	// 初始化日志文件
-	logfile, err := os.Create("logfile.log")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer logfile.Close()
-	log.SetOutput(logfile)
-
 	// 读取配置文件
 	config_file, _ := os.Open("config.json")
 	defer config_file.Close()
@@ -34,6 +26,15 @@ func main() {
 	}
 	conf := Configuration{}
 	decoder.Decode(&conf)
+
+	// 初始化日志文件
+	logfile_path := conf.Static_path + "logfile.log"
+	logfile, err := os.Create(logfile_path)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer logfile.Close()
+	log.SetOutput(logfile)
 
 	// 桌面模式
 	bot := openwechat.DefaultBot(openwechat.Desktop)
