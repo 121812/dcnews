@@ -8,6 +8,52 @@
 
 ## 安装部署
 > 实现过程：当收到一条新的群消息后，查询数据库对应表项，获取消息同步至哪个 DC 频道并发送消息，所以要配置 config.json 文件，包括 dc 机器人 key 和数据库连接方式，导入表结构，配置好表，程序即可开始同步
+### docker-compose 部署
+1. 配置 docer-config.json 文件, 修改数据库密码，对应下面docker compose文件
+    ```go
+    {
+        "Discord_bot_auth": "",
+        "Static_path": "/app/static/",
+        "Mysql_host":"192.168.210.11",
+        "Mysql_port":"3306",
+        "Mysql_db":"dcnews",
+        "Mysql_user":"root",
+        "Mysql_password":"root"
+    }
+    ```
+2. 在 docker-compose.yaml 中修改数据库映射端口和密码
+    ```go
+    mysql:
+        image: mysql:5.7
+        networks:
+        dcnews_network:
+            ipv4_address:
+                192.168.210.11
+        ports:
+            - "23306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: dcnews
+    ```
+
+3. 启动docker compose
+    ```
+    docker compose up
+    ```
+
+4. 手动连接数据库，关联群组对应频道，即可开始同步
+    ```go
+    create_time	添加时间
+    dc_user	dc用户名称
+    wx_user	微信用户名称
+    wx_group	微信群组名称 必填
+    dc_channel_id	dc频道ID 必填
+    dc_channel_info	dc频道介绍 必填，需为URL
+    remark	备注
+    ```
+
+
+### 手动编译部署
 1. 下载依赖包：
     ```shell
     go mod download
