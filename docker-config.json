@@ -1,0 +1,9 @@
+{
+    "Discord_bot_auth": "",
+    "Static_path": "/app/static/",
+    "Mysql_host":"192.168.210.11",
+    "Mysql_port":"3306",
+    "Mysql_db":"dcnews",
+    "Mysql_user":"root",
+    "Mysql_password":"root"
+}

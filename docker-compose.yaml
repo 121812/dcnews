@@ -2,16 +2,34 @@ version: '3.8'
 services:
   dcnews:
     build: .
+    networks:
+      dcnews_network:
+        ipv4_address:
+          192.168.210.10
+    privileged: true
     volumes:
       - ./data/static:/app/static/
-
     depends_on:
       - mysql
 
   mysql:
     image: mysql:5.7
+    networks:
+      dcnews_network:
+        ipv4_address:
+          192.168.210.11
+    ports:
+      - "23306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dcnews
     volumes:
       - ./data/mysql-data:/var/lib/mysql
       - ./dc_wx_association_table.sql:/docker-entrypoint-initdb.d/dc_wx_association_table.sql
+
+networks:
+    dcnews_network:
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.210.0/24
