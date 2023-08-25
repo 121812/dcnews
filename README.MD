@@ -1,12 +1,11 @@
-# <center> DCNews <center> 
+# <p align="center"> DCNews </p>
 <p align="center">
   <a href="https://discord.com/invite/cAKzHRhwtZ"><img src="https://img.shields.io/badge/Discord-%E7%A4%BE%E5%8C%BA-blue" alt="Discord"></a>
   <a href="https://github.com/121812/dcnews/raw/main/Group.png"><img src="https://img.shields.io/badge/%E5%BE%AE%E4%BF%A1-%E4%BA%A4%E6%B5%81%E7%BE%A4-green" alt="微信交流群"></a>
   <a href="https://app.gitbook.com/o/d9qWhVKUUsclyobZUkdw/s/rGmeo38oIkuZjYThzXD1/xiao-bai-kuai-su-jie-ru-dcnews-tuo-guan-ban"><img src="https://img.shields.io/badge/%E6%89%98%E7%AE%A1%E7%89%88-gitbook-blue" alt="托管版"></a>
   <a href="https://app.gitbook.com/o/d9qWhVKUUsclyobZUkdw/s/rGmeo38oIkuZjYThzXD1/ru-he-wei-xiang-mu-jin-hang-gong-xian"><img src="https://img.shields.io/badge/%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE-%E6%96%87%E6%A1%A3-green" alt="如何贡献"></a>
 </p>
-
-> <center> 该工具能够即时捕捉微信群中的聊天消息，并将其自动同步到预设的Discord频道中 <center>
+<p align="center"> 该工具能够即时捕捉微信群中的聊天消息，并将其自动同步到预设的Discord频道中 </p>
 
 ## 功能特性
 * 文本/图片/接龙 消息实时同步至discord
