@@ -71,7 +71,7 @@ func insert_wechat_chat_log(wechat_chat_log Wechat_chat_log) bool {
 	return true
 }
 
-// 对dcnews进行判断，正在则返回channel id，负责返回false
+// 对dcnews进行判断，存在则返回channel id，否则返回 err
 func judge_dcnews_state(sendgr string) (DCNews_info, error) {
 	var DCNews_info DCNews_info
 	select_sql := "select dc_channel_id, dc_channel_info from dc_wx_association_table where wx_group = ?"
