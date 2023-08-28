@@ -15,6 +15,8 @@ import (
 func main() {
 	// 初始化数据库连接
 	init_db()
+	// Discord 初始化
+	init_dc()
 
 	// 读取配置文件
 	config_file, _ := os.Open("config.json")
@@ -67,6 +69,9 @@ func main() {
 				return
 			}
 
+			// 检查discord连接是否正常，否则重新连接
+			discord_connection_check()
+
 			// 消息发送人
 			sender_name := sender.DisplayName
 			if sender.DisplayName == "" {
@@ -104,4 +109,6 @@ func main() {
 	}
 
 	bot.Block()
+	// 关闭 Discord 连接
+	discord.Close()
 }
