@@ -15,7 +15,7 @@
 ## 安装部署
 > 实现过程：当收到一条新的群消息后，查询数据库对应表项，获取消息同步至哪个 DC 频道并发送消息，所以要配置 config.json 文件，包括 dc 机器人 key 和数据库连接方式，导入表结构，配置好表，程序即可开始同步
 ### docker-compose 部署
-1. 配置 docker-config.json 文件, 修改数据库密码，对应下面docker-compose.yaml文件
+1. 配置 docker-config.json 文件, 修改数据库密码，添加 Discord 机器人授权 token, 对应下面docker-compose.yaml文件
     ```go
     {
         "Discord_bot_auth": "",
