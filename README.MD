@@ -110,7 +110,7 @@
 </details>
 
 ## DCNews 社区
-> ![Group](/Group.png)
+> ![Group](/121812/dcnews/blob/main/Group.png)
 
 ## 托管版 
 > 使用DCNews提供的机器人，立即同步！<br> <a href="https://dcnews.gitbook.io/ru-he-shi-yong-tuo-guan-ban/xiao-bai-kuai-su-jie-ru-dcnews-tuo-guan-ban" target="_blank" alt="托管版">点击查看说明</a>
