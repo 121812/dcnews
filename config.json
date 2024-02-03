@@ -5,5 +5,6 @@
     "Mysql_port":"",
     "Mysql_db":"",
     "Mysql_user":"",
-    "Mysql_password":""
+    "Mysql_password":"",
+    "Dc_createsync_prompts": "正在建立微信与Dc同步渠道...\nStep 1.请添加微信 \nStep 2.将该微信拉入目标微信群，等待30秒\nStep 3.在目标微信群输入同步码: "
 }

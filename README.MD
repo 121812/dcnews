@@ -11,6 +11,7 @@
 * 文本/图片/接龙 消息实时同步至discord
 * 支持一同步多或者多同步一
 * PIN 功能 (开发中)
+* DC斜杆命令配置同步项
 
 ## 安装部署
 > 实现过程：当收到一条新的群消息后，查询数据库对应表项，获取消息同步至哪个 DC 频道并发送消息，所以要配置 config.json 文件，包括 dc 机器人 key 和数据库连接方式，导入表结构，配置好表，程序即可开始同步
@@ -24,7 +25,8 @@
         "Mysql_port":"3306",
         "Mysql_db":"dcnews",
         "Mysql_user":"root",
-        "Mysql_password":"root"
+        "Mysql_password":"root",
+        "Dc_createsync_prompts": "正在建立微信与Dc同步渠道...\nStep 1.请添加微信: \nStep 2.将该微信拉入目标微信群，等待30秒\nStep 3.在目标微信群输入同步码: "
     }
     ```
 2. 在 docker-compose.yaml 中修改数据库映射端口和密码
@@ -47,7 +49,9 @@
     docker compose up
     ```
 
-4. 手动连接数据库，关联群组对应频道，即可开始同步
+4. 在日志中找到微信登录链接
+
+5. 手动连接数据库，关联群组对应频道，即可开始同步
     ```go
     create_time	添加时间
     dc_user	dc用户名称
@@ -75,7 +79,8 @@
     "Mysql_port":"",
     "Mysql_db":"",
     "Mysql_user":"",
-    "Mysql_password":""
+    "Mysql_password":"",
+    "Dc_createsync_prompts": "正在建立微信与Dc同步渠道...\nStep 1.请添加微信 \nStep 2.将该微信拉入目标微信群，等待30秒\nStep 3.在目标微信群输入同步码: "
     }
     ```
 3. 导入表结构
@@ -109,8 +114,7 @@
     ```
 </details>
 
-## DCNews 社区
-> ![Group](https://raw.githubusercontent.com/121812/dcnews/main/Group.png)
+## 使用DC斜杆命令创建同步
+1. 在Dc中输入 /createsync 获取同步码
+2. 在需要同步的微信群发送同步码，即可建立同步
 
-## 托管版 
-> 使用DCNews提供的机器人，立即同步！<br> <a href="https://dcnews.gitbook.io/ru-he-shi-yong-tuo-guan-ban/xiao-bai-kuai-su-jie-ru-dcnews-tuo-guan-ban" target="_blank" alt="托管版">点击查看说明</a>

@@ -63,9 +63,18 @@ func main() {
 
 		// 群聊天记录转录
 		if msg.IsSendByGroup() && (msg.IsText() || msg.IsPicture()) {
+			// 微信群名是否配置在数据库中
 			DCNews_info, err := judge_dcnews_state(sendgr.NickName)
+			// 如果不在，则...
 			if err != nil {
-				fmt.Println(DCNews_info, sendgr.NickName)
+				// 判断dc是否执行同步命令 和 发送内容是否为同步码
+				if AtSync_msg.dc_channel_id != "" && sender_content == AtSync_msg.hashString {
+					log.Println(sendgr.NickName, AtSync_msg.dc_channel_id, AtSync_msg.dc_channel_info)
+					// 插入配置项
+					insert_sync_dcCommandTarget(sendgr.NickName, AtSync_msg.dc_channel_id, AtSync_msg.dc_channel_info)
+					// 清空变量
+					AtSync_msg = AtSync_info{}
+				}
 				return
 			}
 
@@ -110,5 +119,5 @@ func main() {
 
 	bot.Block()
 	// 关闭 Discord 连接
-	discord.Close()
+	s.Close()
 }

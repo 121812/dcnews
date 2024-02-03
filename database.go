@@ -82,3 +82,16 @@ func judge_dcnews_state(sendgr string) (DCNews_info, error) {
 	}
 	return DCNews_info, nil
 }
+
+// 插入同步配置
+func insert_sync_dcCommandTarget(wx_group string, dc_channel_id string, dc_channel_info string) bool {
+	insert_sql := "INSERT INTO `dc_wx_association_table` (`create_time`, `dc_user`, `wx_user`, `wx_group`, `dc_channel_id`, `dc_channel_info`, `remark`) VALUES (NULL, NULL, NULL, ?, ?, ?, '程序自动添加');"
+	_, err := db.Exec(insert_sql, wx_group, dc_channel_id, dc_channel_info)
+	if err != nil {
+		// 记录日志或返回错误
+		fmt.Println("Failed to execute SQL statement:", err)
+		return false
+	}
+
+	return true
+}
